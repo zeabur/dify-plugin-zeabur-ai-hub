@@ -28,9 +28,11 @@ jobs:
 
       - name: Package Plugin
         run: |
-          cd ..
-          dify plugin package ./zeabur-ai-hub -o ./zeabur-ai-hub/
-          ls -la ./zeabur-ai-hub/*.difypkg
+          cd $GITHUB_WORKSPACE/..
+          cp -r $GITHUB_WORKSPACE zeabur-ai-hub
+          dify plugin package ./zeabur-ai-hub
+          mv zeabur-ai-hub.difypkg $GITHUB_WORKSPACE/
+          ls -la $GITHUB_WORKSPACE/*.difypkg
 
       - name: Get version from tag
         id: version
