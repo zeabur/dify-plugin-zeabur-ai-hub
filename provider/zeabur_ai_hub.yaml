@@ -29,19 +29,10 @@ supported_model_types:
   - llm
 
 configurate_methods:
+  - predefined-model
   - customizable-model
 
-model_credential_schema:
-  model:
-    label:
-      en_US: Model Name
-      zh_Hans: 模型名称
-      zh_Hant: 模型名稱
-    placeholder:
-      en_US: "e.g. claude-sonnet-4-5-20250514"
-      zh_Hans: "例如 claude-sonnet-4-5-20250514"
-      zh_Hant: "例如 claude-sonnet-4-5-20250514"
-
+provider_credential_schema:
   credential_form_schemas:
     - variable: api_key
       label:
@@ -74,6 +65,25 @@ model_credential_schema:
             en_US: San Francisco (sfo1)
             zh_Hans: 旧金山 (sfo1)
             zh_Hant: 舊金山 (sfo1)
+
+model_credential_schema:
+  model:
+    label:
+      en_US: Model Name
+      zh_Hans: 模型名称
+      zh_Hant: 模型名稱
+    placeholder:
+      en_US: "e.g. claude-sonnet-4-5-20250514"
+      zh_Hans: "例如 claude-sonnet-4-5-20250514"
+      zh_Hant: "例如 claude-sonnet-4-5-20250514"
+
+  credential_form_schemas: []
+
+models:
+  llm:
+    predefined:
+      - "models/llm/*.yaml"
+    position: "models/llm/_position.yaml"
 
 extra:
   python:

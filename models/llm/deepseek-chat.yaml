@@ -1,0 +1,29 @@
+model: deepseek-chat
+label:
+  en_US: DeepSeek Chat
+  zh_Hans: DeepSeek Chat
+  zh_Hant: DeepSeek Chat
+model_type: llm
+features:
+  - agent-thought
+  - tool-call
+  - stream-tool-call
+model_properties:
+  mode: chat
+  context_size: 65536
+parameter_rules:
+  - name: temperature
+    use_template: temperature
+  - name: top_p
+    use_template: top_p
+  - name: max_tokens
+    use_template: max_tokens
+    required: true
+    default: 4096
+    min: 1
+    max: 8192
+pricing:
+  input: "0.14"
+  output: "0.28"
+  unit: "0.000001"
+  currency: USD
