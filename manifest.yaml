@@ -9,6 +9,7 @@ description:
   en_US: "Access Claude, Gemini, GPT, DeepSeek and more via Zeabur AI Hub"
   zh_Hans: "通過 Zeabur AI Hub 使用 Claude、Gemini、GPT、DeepSeek 等模型"
 icon: icon.svg
+created_at: "2025-01-05T13:15:00.000000000Z"
 resource:
   memory: 1048576
   permission:
