@@ -46,21 +46,21 @@ provider_credential_schema:
         zh_Hans: 输入你的 Zeabur AI Hub API Key
         zh_Hant: 輸入你的 Zeabur AI Hub API Key
 
-    - variable: endpoint
+    - variable: endpoint_url
       label:
         en_US: Region
         zh_Hans: 区域
         zh_Hant: 區域
       type: select
       required: true
-      default: hnd1
+      default: https://hnd1.aihub.zeabur.ai/v1
       options:
-        - value: hnd1
+        - value: https://hnd1.aihub.zeabur.ai/v1
           label:
             en_US: Tokyo (hnd1)
             zh_Hans: 东京 (hnd1)
             zh_Hant: 東京 (hnd1)
-        - value: sfo1
+        - value: https://sfo1.aihub.zeabur.ai/v1
           label:
             en_US: San Francisco (sfo1)
             zh_Hans: 旧金山 (sfo1)

@@ -1,4 +1,4 @@
-model: gemini-2.5-flash-preview-05-20
+model: gemini-2.5-flash
 label:
   en_US: Gemini 2.5 Flash
   zh_Hans: Gemini 2.5 Flash

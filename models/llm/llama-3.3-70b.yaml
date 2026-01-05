@@ -1,4 +1,4 @@
-model: llama-3.3-70b-versatile
+model: llama-3.3-70b
 label:
   en_US: Llama 3.3 70B
   zh_Hans: Llama 3.3 70B

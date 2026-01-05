@@ -1,15 +1,16 @@
-model: qwen3-32b
+model: glm-4.6
 label:
-  en_US: Qwen 3 32B
-  zh_Hans: Qwen 3 32B
-  zh_Hant: Qwen 3 32B
+  en_US: GLM-4.6
+  zh_Hans: GLM-4.6
+  zh_Hant: GLM-4.6
 model_type: llm
 features:
   - agent-thought
   - tool-call
+  - stream-tool-call
 model_properties:
   mode: chat
-  context_size: 131072
+  context_size: 128000
 parameter_rules:
   - name: temperature
     use_template: temperature
@@ -22,7 +23,7 @@ parameter_rules:
     min: 1
     max: 8192
 pricing:
-  input: "0.2"
+  input: "0.5"
   output: "0.5"
   unit: "0.000001"
   currency: USD

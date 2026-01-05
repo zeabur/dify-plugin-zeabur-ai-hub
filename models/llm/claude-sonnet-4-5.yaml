@@ -1,4 +1,4 @@
-model: claude-sonnet-4-5-20250514
+model: claude-sonnet-4-5
 label:
   en_US: Claude Sonnet 4.5
   zh_Hans: Claude Sonnet 4.5

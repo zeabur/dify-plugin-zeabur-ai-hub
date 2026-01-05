@@ -1,17 +1,16 @@
-model: claude-haiku-4-5
+model: deepseek-v3.2-exp
 label:
-  en_US: Claude Haiku 4.5
-  zh_Hans: Claude Haiku 4.5
-  zh_Hant: Claude Haiku 4.5
+  en_US: DeepSeek V3.2 Exp
+  zh_Hans: DeepSeek V3.2 实验版
+  zh_Hant: DeepSeek V3.2 實驗版
 model_type: llm
 features:
   - agent-thought
-  - vision
   - tool-call
   - stream-tool-call
 model_properties:
   mode: chat
-  context_size: 200000
+  context_size: 65536
 parameter_rules:
   - name: temperature
     use_template: temperature
@@ -20,11 +19,11 @@ parameter_rules:
   - name: max_tokens
     use_template: max_tokens
     required: true
-    default: 8192
+    default: 4096
     min: 1
-    max: 64000
+    max: 8192
 pricing:
-  input: "0.8"
-  output: "4"
+  input: "0.14"
+  output: "0.28"
   unit: "0.000001"
   currency: USD

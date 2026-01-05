@@ -1,5 +1,9 @@
-from collections.abc import Mapping
+from typing import Optional
+from collections.abc import Generator
 
+from dify_plugin.entities.model import AIModelEntity
+from dify_plugin.entities.model.llm import LLMResult, LLMResultChunk
+from dify_plugin.entities.model.message import PromptMessage, PromptMessageTool
 from dify_plugin.interfaces.model.openai_compatible.llm import OAICompatLargeLanguageModel
 
 
@@ -8,20 +12,27 @@ class ZeaburLargeLanguageModel(OAICompatLargeLanguageModel):
     Zeabur AI Hub LLM implementation.
 
     Since Zeabur AI Hub is built on LiteLLM and uses the OpenAI-compatible API format,
-    we can simply extend the OAICompatLargeLanguageModel base class.
+    we extend the OAICompatLargeLanguageModel base class and add custom parameters.
     """
 
-    def _get_api_url(self, credentials: Mapping) -> str:
-        """
-        Get the API URL based on the selected region endpoint.
+    def _invoke(
+        self,
+        model: str,
+        credentials: dict,
+        prompt_messages: list[PromptMessage],
+        model_parameters: dict,
+        tools: Optional[list[PromptMessageTool]] = None,
+        stop: Optional[list[str]] = None,
+        stream: bool = True,
+        user: Optional[str] = None,
+    ) -> Generator[LLMResultChunk, None, None] | LLMResult:
+        self._add_custom_parameters(credentials)
+        return super()._invoke(model, credentials, prompt_messages, model_parameters, tools, stop, stream, user)
 
-        Available endpoints:
-        - hnd1: Tokyo, Japan (https://hnd1.aihub.zeabur.ai/v1)
-        - sfo1: San Francisco, USA (https://sfo1.aihub.zeabur.ai/v1)
-        """
-        endpoint = credentials.get("endpoint", "hnd1")
-        return f"https://{endpoint}.aihub.zeabur.ai/v1"
+    def validate_credentials(self, model: str, credentials: dict) -> None:
+        self._add_custom_parameters(credentials)
+        super().validate_credentials(model, credentials)
 
-    def _get_api_key(self, credentials: Mapping) -> str:
-        """Get the API key from credentials."""
-        return credentials.get("api_key", "")
+    @staticmethod
+    def _add_custom_parameters(credentials: dict) -> None:
+        credentials["mode"] = "chat"
