@@ -1,0 +1,72 @@
+provider: zeabur_ai_hub
+
+label:
+  en_US: Zeabur AI Hub
+  zh_Hans: Zeabur AI Hub
+
+description:
+  en_US: Access Claude, Gemini, GPT, DeepSeek and more AI models via Zeabur AI Hub
+  zh_Hans: 通過 Zeabur AI Hub 使用 Claude、Gemini、GPT、DeepSeek 等 AI 模型
+
+icon_small:
+  en_US: icon.svg
+icon_large:
+  en_US: icon.svg
+
+background: "#6366F1"
+
+help:
+  title:
+    en_US: Get your API Key from Zeabur AI Hub
+    zh_Hans: 從 Zeabur AI Hub 獲取 API Key
+  url:
+    en_US: https://zeabur.com/ai-hub
+
+supported_model_types:
+  - llm
+
+configurate_methods:
+  - customizable-model
+
+model_credential_schema:
+  model:
+    label:
+      en_US: Model Name
+      zh_Hans: 模型名稱
+    placeholder:
+      en_US: "e.g. claude-sonnet-4-5-20250514"
+      zh_Hans: "例如 claude-sonnet-4-5-20250514"
+
+  credential_form_schemas:
+    - variable: api_key
+      label:
+        en_US: API Key
+        zh_Hans: API Key
+      type: secret-input
+      required: true
+      placeholder:
+        en_US: Enter your Zeabur AI Hub API Key
+        zh_Hans: 輸入你的 Zeabur AI Hub API Key
+
+    - variable: endpoint
+      label:
+        en_US: Region
+        zh_Hans: 區域
+      type: select
+      required: true
+      default: hnd1
+      options:
+        - value: hnd1
+          label:
+            en_US: Tokyo (hnd1)
+            zh_Hans: 東京 (hnd1)
+        - value: sfo1
+          label:
+            en_US: San Francisco (sfo1)
+            zh_Hans: 舊金山 (sfo1)
+
+extra:
+  python:
+    provider_source: provider/zeabur_ai_hub.py
+    model_sources:
+      - models/llm/llm.py

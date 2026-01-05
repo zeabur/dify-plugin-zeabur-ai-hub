@@ -1,0 +1,56 @@
+name: Release Dify Plugin
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Dify CLI
+        run: |
+          curl -LO https://github.com/langgenius/dify-plugin-daemon/releases/latest/download/dify-plugin-linux-amd64
+          chmod +x dify-plugin-linux-amd64
+          sudo mv dify-plugin-linux-amd64 /usr/local/bin/dify
+
+      - name: Package Plugin
+        run: |
+          cd ..
+          dify plugin package ./zeabur-ai-hub -o ./zeabur-ai-hub/
+          ls -la ./zeabur-ai-hub/*.difypkg
+
+      - name: Get version from tag
+        id: version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Release ${{ steps.version.outputs.VERSION }}
+          body: |
+            ## Zeabur AI Hub Plugin for Dify
+
+            ### Installation
+            1. Download the `.difypkg` file from this release
+            2. In Dify, go to **Plugins** > **Install Plugin**
+            3. Upload the downloaded `.difypkg` file
+
+            ### Changes
+            See [CHANGELOG](https://github.com/zeabur/dify-plugin-zeabur-ai-hub/blob/main/CHANGELOG.md) for details.
+          files: |
+            *.difypkg
+          draft: false
+          prerelease: false
