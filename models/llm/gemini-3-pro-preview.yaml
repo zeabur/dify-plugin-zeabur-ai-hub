@@ -32,18 +32,10 @@ parameter_rules:
       en_US: Response Format
       zh_Hans: 响应格式
       zh_Hant: 回應格式
-    type: select
+    type: string
     options:
-      - value: text
-        label:
-          en_US: Text
-          zh_Hans: 文本
-          zh_Hant: 文字
-      - value: json_object
-        label:
-          en_US: JSON Object
-          zh_Hans: JSON 对象
-          zh_Hant: JSON 物件
+    - text
+    - json_object
     required: false
 
 pricing:
