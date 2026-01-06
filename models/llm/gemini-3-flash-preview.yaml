@@ -23,6 +23,29 @@ parameter_rules:
     default: 8192
     min: 1
     max: 65536
+  - name: presence_penalty
+    use_template: presence_penalty
+  - name: frequency_penalty
+    use_template: frequency_penalty
+  - name: response_format
+    label:
+      en_US: Response Format
+      zh_Hans: 响应格式
+      zh_Hant: 回應格式
+    type: select
+    options:
+      - value: text
+        label:
+          en_US: Text
+          zh_Hans: 文本
+          zh_Hant: 文字
+      - value: json_object
+        label:
+          en_US: JSON Object
+          zh_Hans: JSON 对象
+          zh_Hant: JSON 物件
+    required: false
+
 pricing:
   input: "0.15"
   output: "0.6"
