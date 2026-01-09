@@ -16,12 +16,54 @@ parameter_rules:
     use_template: temperature
   - name: top_p
     use_template: top_p
+  - name: top_k
+    label:
+      en_US: Top K
+      zh_Hans: Top K
+      zh_Hant: Top K
+    type: int
+    min: 0
+    max: 100
+    default: 20
+    required: false
+    help:
+      en_US: Limits token selection to top K choices. Recommended value is 20.
+      zh_Hans: 将令牌选择限制在前 K 个选项。推荐值为 20。
+      zh_Hant: 將令牌選擇限制在前 K 個選項。推薦值為 20。
   - name: max_tokens
     use_template: max_tokens
     required: true
     default: 4096
     min: 1
     max: 8192
+  - name: presence_penalty
+    use_template: presence_penalty
+  - name: frequency_penalty
+    use_template: frequency_penalty
+  - name: repetition_penalty
+    label:
+      en_US: Repetition Penalty
+      zh_Hans: 重复惩罚
+      zh_Hant: 重複懲罰
+    type: float
+    min: 0.0
+    max: 2.0
+    default: 1.0
+    required: false
+    help:
+      en_US: Penalty for repeated tokens. Values > 1 reduce repetition. Recommended 1.0-1.5.
+      zh_Hans: 重复令牌的惩罚。值 > 1 减少重复。推荐 1.0-1.5。
+      zh_Hant: 重複令牌的懲罰。值 > 1 減少重複。推薦 1.0-1.5。
+  - name: response_format
+    label:
+      en_US: Response Format
+      zh_Hans: 响应格式
+      zh_Hant: 回應格式
+    type: string
+    options:
+    - text
+    - json_object
+    required: false
 
 pricing:
   input: "0.4"

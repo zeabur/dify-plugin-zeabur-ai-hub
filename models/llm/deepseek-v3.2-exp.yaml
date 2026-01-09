@@ -36,6 +36,31 @@ parameter_rules:
     - text
     - json_object
     required: false
+  - name: logprobs
+    label:
+      en_US: Log Probabilities
+      zh_Hans: 对数概率
+      zh_Hant: 對數機率
+    type: boolean
+    default: false
+    required: false
+    help:
+      en_US: Whether to return log probabilities of the output tokens.
+      zh_Hans: 是否返回输出令牌的对数概率。
+      zh_Hant: 是否返回輸出令牌的對數機率。
+  - name: top_logprobs
+    label:
+      en_US: Top Log Probabilities
+      zh_Hans: 顶部对数概率
+      zh_Hant: 頂部對數機率
+    type: int
+    min: 0
+    max: 20
+    required: false
+    help:
+      en_US: Number of most likely tokens to return at each position (0-20). Requires logprobs to be true.
+      zh_Hans: 每个位置返回的最可能令牌数量 (0-20)。需要 logprobs 为 true。
+      zh_Hant: 每個位置返回的最可能令牌數量 (0-20)。需要 logprobs 為 true。
 
 pricing:
   input: "0.14"

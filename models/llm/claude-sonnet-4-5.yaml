@@ -17,6 +17,19 @@ parameter_rules:
     use_template: temperature
   - name: top_p
     use_template: top_p
+  - name: top_k
+    label:
+      en_US: Top K
+      zh_Hans: Top K
+      zh_Hant: Top K
+    type: int
+    min: 0
+    max: 500
+    required: false
+    help:
+      en_US: Sample from top K options. Removes long tail low probability responses.
+      zh_Hans: 从前 K 个选项中采样。移除低概率的长尾响应。
+      zh_Hant: 從前 K 個選項中採樣。移除低機率的長尾回應。
   - name: max_tokens
     use_template: max_tokens
     required: true
@@ -33,6 +46,18 @@ parameter_rules:
     - text
     - json_object
     required: false
+  - name: thinking_budget_tokens
+    label:
+      en_US: Thinking Budget
+      zh_Hans: 思考预算
+      zh_Hant: 思考預算
+    type: int
+    min: 1024
+    required: false
+    help:
+      en_US: Token budget for extended thinking. Minimum 1024, must be less than max_tokens.
+      zh_Hans: 扩展思考的令牌预算。最小 1024，必须小于 max_tokens。
+      zh_Hant: 擴展思考的令牌預算。最小 1024，必須小於 max_tokens。
 
 pricing:
   input: "3"

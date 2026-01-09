@@ -17,14 +17,40 @@ parameter_rules:
     use_template: temperature
   - name: top_p
     use_template: top_p
+  - name: top_k
+    label:
+      en_US: Top K
+      zh_Hans: Top K
+      zh_Hant: Top K
+    type: int
+    min: 0
+    max: 100
+    required: false
+    help:
+      en_US: Limits token selection to top K choices. 0 means no limit.
+      zh_Hans: 将令牌选择限制在前 K 个选项。0 表示无限制。
+      zh_Hant: 將令牌選擇限制在前 K 個選項。0 表示無限制。
   - name: max_tokens
     use_template: max_tokens
     required: true
     default: 8192
     min: 1
     max: 65536
+  - name: presence_penalty
+    use_template: presence_penalty
   - name: frequency_penalty
     use_template: frequency_penalty
+  - name: seed
+    label:
+      en_US: Seed
+      zh_Hans: 随机种子
+      zh_Hant: 隨機種子
+    type: int
+    required: false
+    help:
+      en_US: Random seed for reproducible outputs. Set a specific value for deterministic results.
+      zh_Hans: 用于可重复输出的随机种子。设置特定值以获得确定性结果。
+      zh_Hant: 用於可重複輸出的隨機種子。設置特定值以獲得確定性結果。
   - name: response_format
     label:
       en_US: Response Format
@@ -35,6 +61,46 @@ parameter_rules:
     - text
     - json_object
     required: false
+  - name: json_schema
+    label:
+      en_US: JSON Schema
+      zh_Hans: JSON Schema
+      zh_Hant: JSON Schema
+    type: text
+    required: false
+    help:
+      en_US: Define a JSON Schema for structured output. Only works when Response Format is json_object.
+      zh_Hans: 定义 JSON Schema 以获取结构化输出。仅在响应格式为 json_object 时有效。
+      zh_Hant: 定義 JSON Schema 以獲取結構化輸出。僅在回應格式為 json_object 時有效。
+  - name: reasoning_effort
+    label:
+      en_US: Reasoning Effort
+      zh_Hans: 推理程度
+      zh_Hant: 推理程度
+    type: string
+    options:
+    - none
+    - minimal
+    - low
+    - medium
+    - high
+    required: false
+    help:
+      en_US: Controls the depth of reasoning. Higher values use more tokens for thinking.
+      zh_Hans: 控制推理的深度。较高的值会使用更多令牌进行思考。
+      zh_Hant: 控制推理的深度。較高的值會使用更多令牌進行思考。
+  - name: include_reasoning
+    label:
+      en_US: Include Reasoning
+      zh_Hans: 显示推理过程
+      zh_Hant: 顯示推理過程
+    type: boolean
+    default: true
+    required: false
+    help:
+      en_US: Whether to include the model's reasoning process in the response.
+      zh_Hans: 是否在响应中包含模型的推理过程。
+      zh_Hant: 是否在回應中包含模型的推理過程。
 
 pricing:
   input: "0.15"

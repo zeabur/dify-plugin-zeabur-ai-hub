@@ -37,6 +37,53 @@ parameter_rules:
     - text
     - json_object
     required: false
+  - name: json_schema
+    label:
+      en_US: JSON Schema
+      zh_Hans: JSON Schema
+      zh_Hant: JSON Schema
+    type: text
+    required: false
+    help:
+      en_US: Define a JSON Schema for structured output. Only works when Response Format is json_object.
+      zh_Hans: 定义 JSON Schema 以获取结构化输出。仅在响应格式为 json_object 时有效。
+      zh_Hant: 定義 JSON Schema 以獲取結構化輸出。僅在回應格式為 json_object 時有效。
+  - name: seed
+    label:
+      en_US: Seed
+      zh_Hans: 随机种子
+      zh_Hant: 隨機種子
+    type: int
+    required: false
+    help:
+      en_US: Random seed for deterministic sampling. Use with system_fingerprint for reproducibility.
+      zh_Hans: 用于确定性采样的随机种子。与 system_fingerprint 一起使用以实现可重复性。
+      zh_Hant: 用於確定性採樣的隨機種子。與 system_fingerprint 一起使用以實現可重複性。
+  - name: logprobs
+    label:
+      en_US: Log Probabilities
+      zh_Hans: 对数概率
+      zh_Hant: 對數機率
+    type: boolean
+    default: false
+    required: false
+    help:
+      en_US: Whether to return log probabilities of the output tokens.
+      zh_Hans: 是否返回输出令牌的对数概率。
+      zh_Hant: 是否返回輸出令牌的對數機率。
+  - name: top_logprobs
+    label:
+      en_US: Top Log Probabilities
+      zh_Hans: 顶部对数概率
+      zh_Hant: 頂部對數機率
+    type: int
+    min: 0
+    max: 20
+    required: false
+    help:
+      en_US: Number of most likely tokens to return at each position (0-20). Requires logprobs to be true.
+      zh_Hans: 每个位置返回的最可能令牌数量 (0-20)。需要 logprobs 为 true。
+      zh_Hant: 每個位置返回的最可能令牌數量 (0-20)。需要 logprobs 為 true。
 
 pricing:
   input: "1"
