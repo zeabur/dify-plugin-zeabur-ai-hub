@@ -23,8 +23,6 @@ parameter_rules:
     default: 8192
     min: 1
     max: 65536
-  - name: presence_penalty
-    use_template: presence_penalty
   - name: frequency_penalty
     use_template: frequency_penalty
   - name: response_format

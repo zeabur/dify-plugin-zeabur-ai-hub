@@ -1,4 +1,4 @@
-version: 0.0.7
+version: 0.0.8
 type: plugin
 author: "zeabur"
 name: "zeabur_ai_hub"
@@ -21,7 +21,7 @@ plugins:
   models:
     - "provider/zeabur_ai_hub.yaml"
 meta:
-  version: 0.0.7
+  version: 0.0.8
   minimum_dify_version: "1.0.0"
   arch:
     - amd64
