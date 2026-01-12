@@ -11,6 +11,7 @@ description:
   zh_Hans: "通过 Zeabur AI Hub 使用 Claude、Gemini、GPT、DeepSeek 等模型"
   zh_Hant: "透過 Zeabur AI Hub 使用 Claude、Gemini、GPT、DeepSeek 等模型"
 icon: icon.svg
+privacy: PRIVACY.md
 created_at: "2025-01-05T13:15:00.000000000Z"
 resource:
   memory: 1048576
