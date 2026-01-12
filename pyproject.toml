@@ -1,6 +1,6 @@
 [project]
 name = "zeabur-ai-hub"
-version = "0.0.8"
+version = "0.0.9"
 description = "Zeabur AI Hub plugin for Dify - Access Claude, Gemini, GPT, DeepSeek and more"
 readme = "README.md"
 requires-python = ">=3.12"
