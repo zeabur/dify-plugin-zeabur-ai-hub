@@ -1,16 +1,17 @@
-model: deepseek-v3.2-exp
+model: gpt-5-nano
 label:
-  en_US: DeepSeek V3.2 Exp
-  zh_Hans: DeepSeek V3.2 实验版
-  zh_Hant: DeepSeek V3.2 實驗版
+  en_US: GPT-5 Nano
+  zh_Hans: GPT-5 Nano
+  zh_Hant: GPT-5 Nano
 model_type: llm
 features:
   - agent-thought
+  - vision
   - tool-call
   - stream-tool-call
 model_properties:
   mode: chat
-  context_size: 65536
+  context_size: 128000
 parameter_rules:
   - name: temperature
     use_template: temperature
@@ -19,9 +20,9 @@ parameter_rules:
   - name: max_tokens
     use_template: max_tokens
     required: true
-    default: 4096
+    default: 8192
     min: 1
-    max: 8192
+    max: 32768
   - name: presence_penalty
     use_template: presence_penalty
   - name: frequency_penalty
@@ -36,6 +37,28 @@ parameter_rules:
     - text
     - json_object
     required: false
+  - name: json_schema
+    label:
+      en_US: JSON Schema
+      zh_Hans: JSON Schema
+      zh_Hant: JSON Schema
+    type: text
+    required: false
+    help:
+      en_US: Define a JSON Schema for structured output. Only works when Response Format is json_object.
+      zh_Hans: 定义 JSON Schema 以获取结构化输出。仅在响应格式为 json_object 时有效。
+      zh_Hant: 定義 JSON Schema 以獲取結構化輸出。僅在回應格式為 json_object 時有效。
+  - name: seed
+    label:
+      en_US: Seed
+      zh_Hans: 随机种子
+      zh_Hant: 隨機種子
+    type: int
+    required: false
+    help:
+      en_US: Random seed for deterministic sampling. Use with system_fingerprint for reproducibility.
+      zh_Hans: 用于确定性采样的随机种子。与 system_fingerprint 一起使用以实现可重复性。
+      zh_Hant: 用於確定性採樣的隨機種子。與 system_fingerprint 一起使用以實現可重複性。
   - name: logprobs
     label:
       en_US: Log Probabilities
@@ -63,7 +86,7 @@ parameter_rules:
       zh_Hant: 每個位置返回的最可能令牌數量 (0-20)。需要 logprobs 為 true。
 
 pricing:
-  input: "0.14"
-  output: "0.28"
+  input: "0.05"
+  output: "0.4"
   unit: "0.000001"
   currency: USD

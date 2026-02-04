@@ -1,0 +1,67 @@
+model: gemini-2.5-flash-image
+label:
+  en_US: Gemini 2.5 Flash Image
+  zh_Hans: Gemini 2.5 Flash Image
+  zh_Hant: Gemini 2.5 Flash Image
+model_type: llm
+features:
+  - agent-thought
+  - vision
+model_properties:
+  mode: chat
+  context_size: 1048576
+parameter_rules:
+  - name: temperature
+    use_template: temperature
+  - name: top_p
+    use_template: top_p
+  - name: top_k
+    label:
+      en_US: Top K
+      zh_Hans: Top K
+      zh_Hant: Top K
+    type: int
+    min: 0
+    max: 100
+    required: false
+    help:
+      en_US: Limits token selection to top K choices. 0 means no limit.
+      zh_Hans: 将令牌选择限制在前 K 个选项。0 表示无限制。
+      zh_Hant: 將令牌選擇限制在前 K 個選項。0 表示無限制。
+  - name: max_tokens
+    use_template: max_tokens
+    required: true
+    default: 8192
+    min: 1
+    max: 65536
+  - name: presence_penalty
+    use_template: presence_penalty
+  - name: frequency_penalty
+    use_template: frequency_penalty
+  - name: seed
+    label:
+      en_US: Seed
+      zh_Hans: 随机种子
+      zh_Hant: 隨機種子
+    type: int
+    required: false
+    help:
+      en_US: Random seed for reproducible outputs. Set a specific value for deterministic results.
+      zh_Hans: 用于可重复输出的随机种子。设置特定值以获得确定性结果。
+      zh_Hant: 用於可重複輸出的隨機種子。設置特定值以獲得確定性結果。
+  - name: response_format
+    label:
+      en_US: Response Format
+      zh_Hans: 响应格式
+      zh_Hant: 回應格式
+    type: string
+    options:
+    - text
+    - json_object
+    required: false
+
+pricing:
+  input: "0.3"
+  output: "30"
+  unit: "0.000001"
+  currency: USD
