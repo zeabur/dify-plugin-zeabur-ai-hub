@@ -39,4 +39,3 @@ Thumbs.db
 
 # Dify plugin
 *.difypkg
-uv.lock
