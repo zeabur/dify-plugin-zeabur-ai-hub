@@ -1,12 +1,15 @@
 [project]
 name = "zeabur-ai-hub"
-version = "0.0.9"
+version = "0.0.12"
 description = "Zeabur AI Hub plugin for Dify - Access Claude, Gemini, GPT, DeepSeek and more"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "dify-plugin>=0.7",
 ]
+
+[tool.setuptools]
+packages = []
 
 [build-system]
 requires = ["setuptools>=61.0"]
